@@ -1,0 +1,161 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"><html><head></head><body>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="WordSection1">
+
+<p class="MsoNormal" align="center" style="text-align:center;"><b><span style="font-size:14.0pt;font-family:
+&quot;Palatino Linotype&quot;,&quot;serif&quot;;">Programming Assignment #3<i></i></span></b></p>
+
+<p class="MsoNormal" align="center" style="text-align:center;"><b><span style="font-size:14.0pt;font-family:
+&quot;Palatino Linotype&quot;,&quot;serif&quot;;">CS 261 Programming Systems</span></b></p>
+
+<p class="MsoNormal"><b><span style="font-family:&quot;Palatino Linotype&quot;,&quot;serif&quot;;">&#160;</span></b></p>
+
+<p class="MsoNormal"><b><span style="font-family:&quot;Palatino Linotype&quot;,&quot;serif&quot;;">&#160;</span></b></p>
+
+<div style="border:double windowtext 2.25pt;padding:0in 0in 0in 0in;">
+
+<p class="MsoNormal" style="border:none;padding:0in;"><b><span style="font-family:&quot;Palatino Linotype&quot;,&quot;serif&quot;;">&#160;</span></b></p>
+
+</div>
+
+<p class="MsoNormal"><b><span style="font-family:&quot;Palatino Linotype&quot;,&quot;serif&quot;;">&#160;</span></b></p>
+
+<p class="Default"><span style="font-family:&quot;Palatino Linotype&quot;,&quot;serif&quot;;">&#160;</span></p>
+
+<p class="MsoNormal" style="text-align:justify;"><span style="font-family:&quot;Palatino Linotype&quot;,&quot;serif&quot;;"><span>&#160;</span></span><b><span style="font-size:11.5pt;font-family:&quot;Palatino Linotype&quot;,&quot;serif&quot;;">***This program is about operator
+overloading in inheritance hierarchies. *** </span></b></p>
+
+<p class="MsoNormal" style="text-align:justify;"><b><span style="font-size:11.5pt;font-family:&quot;Palatino Linotype&quot;,&quot;serif&quot;;">&#160;</span></b></p>
+
+<p class="MsoNormal" style="text-align:justify;"><b><u><span style="font-family:&quot;Palatino Linotype&quot;,&quot;serif&quot;;">Remember our
+goals:</span></u></b></p>
+
+<p class="MsoBodyText"><span style="font-family:&quot;Palatino Linotype&quot;,&quot;serif&quot;;">This
+term, the key idea is to break down the problem outlined (below) into small
+pieces and assign those responsibilities to individual classes. For each
+assignment, your job will be to create an OO design and program that shows how
+Object Oriented constructs could be used to solve the problem. You will want to
+focus on how to design classes that are well structured, efficient, that work
+together, and where each class has a specific <b>“job”</b>. This time you are adding operator overloading as the new
+syntax for your solution!</span></p>
+
+<p class="MsoBodyText"><span style="font-family:&quot;Palatino Linotype&quot;,&quot;serif&quot;;">&#160;</span></p>
+
+<p class="MsoBodyText"><span style="font-family:&quot;Palatino Linotype&quot;,&quot;serif&quot;;">Operator
+overloading is best implemented when we create new abstract data types. So,
+look back at your first two programs. Did you tie the data structures into the
+midst of your OO designs? Did the designs really become all about the data structure
+and not so much about the problem at hand? <span style="background:lightgrey;">This time,</span> we want to create our own abstract
+data types implemented with a full set of operators and have them used by our
+OO programs.</span></p>
+
+<p class="MsoNormal" style="text-align:justify;"><span style="font-family:&quot;Palatino Linotype&quot;,&quot;serif&quot;;">&#160;</span></p>
+
+<h1><span style="font-family:&quot;Palatino Linotype&quot;,&quot;serif&quot;;">&#160;</span></h1>
+
+<h1><span style="font-family:&quot;Palatino Linotype&quot;,&quot;serif&quot;;">Program #3 - The Abstract Data Type</span></h1>
+
+<p class="MsoNormal"><span style="font-family:&quot;Palatino Linotype&quot;,&quot;serif&quot;;">So how
+do you communicate with your friends? Is it by phone calls, text or other
+instant messaging services, <span class="SpellE">facebook</span> messenger, or
+maybe even email? If you use multiple services, do you ever get tired of
+checking each or wondering for this particular friend how best should I
+communicate with <span class="GramE">them.</span> I might text someone who uses <span class="SpellE">facebook</span> rather than texts.</span></p>
+
+<p class="MsoNormal"><span style="font-family:&quot;Palatino Linotype&quot;,&quot;serif&quot;;">&#160;</span></p>
+
+<p class="MsoNormal" style="text-align:justify;"><span style="font-family:&quot;Palatino Linotype&quot;,&quot;serif&quot;;">Your
+mission, if you choose to take it, is to create a small application that keeps
+track of messages from at least 3 different vehicles (e.g., text, <span class="SpellE">facebook</span>, email). You want people to quickly know when they
+have a message from one of these services. Create a contacts list where each
+person not only has a name, they also have a tag for how best to communicate
+with them. Based on that tag, the contacts will have their phone number, <span class="SpellE">facebook</span> account name, or email address, etc. Allow people
+to read, send and receive messages. <i><u>THIS
+IS A SIMULATION, so it is not expected that you actually interact with <span class="SpellE">facebook</span> or other applications.</u></i> As usual, you need
+a minimum of 5 classes, some hierarchically arranged. </span></p>
+
+<p class="MsoNormal" style="text-align:justify;"><span style="font-family:&quot;Palatino Linotype&quot;,&quot;serif&quot;;">&#160;</span></p>
+
+<p class="MsoNormal" style="text-align:justify;"><b><span style="font-family:&quot;Palatino Linotype&quot;,&quot;serif&quot;;">Data structure:</span></b></p>
+
+<p class="MsoNormal" style="text-align:justify;"><span style="font-family:&quot;Palatino Linotype&quot;,&quot;serif&quot;;">The
+application will store messages using a balanced binary search tree of your
+choice (e.g., 2-3, 2-3-4, read-black, AVL, or others). You may use a
+combination of a standard BST and an array to create a balanced BST. STL
+containers are acceptable too.</span></p>
+
+<p class="MsoNormal" style="text-align:justify;"><span style="font-family:&quot;Palatino Linotype&quot;,&quot;serif&quot;;">&#160;</span></p>
+
+<p class="MsoNormal" style="text-align:justify;"><b><span style="font-family:&quot;Palatino Linotype&quot;,&quot;serif&quot;;">The primary
+purpose is to support operators with your classes: </span></b><b><span style="font-family:&quot;Palatino Linotype&quot;,&quot;serif&quot;;">=, +, +=, ==<span class="GramE">, !</span>=, the
+relational operators, and the ability to input/output data.</span></b><span style="font-family:&quot;Palatino Linotype&quot;,&quot;serif&quot;;"> Think
+about how these operators might apply to your classes. You could apply them to
+a message class or to your tree class (or both). Will you use the + to append
+to a message? Certainly &lt;&lt; will allow you to display or send a message.
+The = operator will allow a message to be copied. As you decide how to apply
+the operators, make sure to stay within the rules of how the operators are
+expected to behave. You may find that some operators don’t apply at all (and
+therefore shouldn’t be implemented). Don’t forget your copy constructor! For
+each of your operators make sure to fully test them. </span></p>
+
+<p class="MsoNormal" style="text-align:justify;"><span style="font-family:&quot;Palatino Linotype&quot;,&quot;serif&quot;;">&#160;</span></p>
+
+<p class="MsoNormal" style="text-align:justify;"><span style="font-family:&quot;Palatino Linotype&quot;,&quot;serif&quot;;background:yellow;">In fact,
+EVERY CLASS that has dynamic memory MUST have a copy constructor AND an
+assignment operator to perform a deep copy!</span><span style="font-family:
+&quot;Palatino Linotype&quot;,&quot;serif&quot;;"></span></p>
+
+<p class="MsoNormal" style="text-align:justify;"><span style="font-family:&quot;Palatino Linotype&quot;,&quot;serif&quot;;">&#160;</span></p>
+
+<p class="MsoNormal"><b><span style="font-family:&quot;Palatino Linotype&quot;,&quot;serif&quot;;">Questions to ask…about operator overloading</span></b></p>
+
+<p class="MsoNormal" style="text-align:justify;"><span style="font-family:&quot;Palatino Linotype&quot;,&quot;serif&quot;;">When using operator overloading, remember to ask
+yourself the following questions:</span></p>
+
+<p class="MsoNormal" style="margin-left:.25in;text-align:justify;text-indent:
+-.25in;"><span style="font-family:&quot;Palatino Linotype&quot;,&quot;serif&quot;;"><span>a)<span style="font:7.0pt &quot;Times New Roman&quot;;">&#160;&#160;&#160;&#160;&#160; </span></span></span><span style="font-family:&quot;Palatino Linotype&quot;,&quot;serif&quot;;">What
+should be the residual value (and what data type is this)? </span></p>
+
+<p class="MsoNormal" style="text-align:justify;"><span style="font-family:&quot;Palatino Linotype&quot;,&quot;serif&quot;;">b)
+Should it be a modifiable <span class="SpellE">lvalue</span> or an <span class="SpellE">rvalue</span>? <span class="SpellE">Lvalues</span> are returned by
+reference, most <span class="SpellE">rvalues</span> are returned by value.</span></p>
+
+<p class="MsoNormal" style="text-align:justify;"><span style="font-family:&quot;Palatino Linotype&quot;,&quot;serif&quot;;">c)
+What are the data types of the operator’s operands? Remember to pass as a
+constant reference whenever possible.</span></p>
+
+<p class="MsoNormal" style="text-align:justify;"><span style="font-family:&quot;Palatino Linotype&quot;,&quot;serif&quot;;">d)
+Is the first operand always an object of class? If so, then it should be a
+member function.<i></i></span></p>
+
+<p class="MsoNormal" style="text-align:justify;"><span style="font-family:&quot;Palatino Linotype&quot;,&quot;serif&quot;;">e)
+Can the operator be used with constant operands? If the first operand can be a
+constant, and IF it is a member function, then it should be a constant member
+function.</span></p>
+
+<p class="MsoNormal"><span style="font-family:&quot;Palatino Linotype&quot;,&quot;serif&quot;;">&#160;</span></p>
+
+</div>
+
+
+
+
+<script type="text/javascript" src="/d2l/common/math/MathML.js?v=10.7.2.7109-197 "></script><script type="text/javascript">document.addEventListener('DOMContentLoaded', function() { D2LMathML.DesktopInit('https://s.brightspace.com/lib/mathjax/2.6.1/MathJax.js?config=MML_HTMLorMML','https://s.brightspace.com/lib/mathjax/2.6.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML'); });</script></body></html>

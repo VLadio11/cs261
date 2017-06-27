@@ -1,0 +1,175 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"><html><head></head><body>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="WordSection1">
+
+<p class="MsoNormal" align="center" style="text-align:center;"><b><span style="font-size:14.0pt;font-family:
+&quot;Palatino&quot;,&quot;serif&quot;;">Programming Assignments #1 and 2</span></b></p>
+
+<p class="MsoNormal" align="center" style="text-align:center;"><b><span style="font-size:14.0pt;font-family:
+&quot;Palatino&quot;,&quot;serif&quot;;">CS 261 Programming Systems</span></b></p>
+
+<p class="MsoNormal"><b><span style="font-family:&quot;Palatino&quot;,&quot;serif&quot;;">&#160;</span></b></p>
+
+<p class="MsoNormal"><b><span style="font-family:&quot;Palatino&quot;,&quot;serif&quot;;">&#160;</span></b></p>
+
+<div style="border:double windowtext 2.25pt;padding:0in 0in 0in 0in;">
+
+<p class="MsoNormal" align="center" style="text-align:center;border:none;padding:0in;"><b><span style="font-family:&quot;Palatino Linotype&quot;,&quot;serif&quot;;">***
+Make sure to read the Background Information first! </span></b></p>
+
+<p class="MsoNormal" align="center" style="text-align:center;border:none;padding:0in;"><b><span style="font-family:&quot;Palatino Linotype&quot;,&quot;serif&quot;;">It
+applies to all programming assignments this term***</span></b></p>
+
+</div>
+
+<p class="MsoNormal"><b><span style="font-family:&quot;Palatino Linotype&quot;,&quot;serif&quot;;">&#160;</span></b></p>
+
+<p class="MsoNormal"><b><span style="font-family:&quot;Palatino&quot;,&quot;serif&quot;;">&#160;</span></b></p>
+
+<p class="MsoNormal" style="text-align:justify;"><b><span style="font-family:&quot;Palatino&quot;,&quot;serif&quot;;">Background:</span></b></p>
+
+<p class="MsoBodyText">When beginning with this project, the
+first thing to keep in mind is that we are no longer working on CS260 programs!
+In CS260 we were concerned about creating Abstract Data Types and the class
+construct facilitated this. Instead, this term we will be focusing on how to
+create Object Oriented Solutions. An ADT may be part of that solution – but it
+certainly shouldn’t be the primary focus. Instead you want to strive for
+classes to have specific “jobs” and have classes derived from more general
+classes, whenever appropriate.</p>
+
+<p class="MsoBodyText">&#160;</p>
+
+<p class="MsoNormal" style="text-align:justify;"><b><span style="font-family:&quot;Palatino&quot;,&quot;serif&quot;;">Overview:</span></b></p>
+
+<p class="MsoNormal" style="text-align:justify;"><span style="font-family:&quot;Palatino&quot;,&quot;serif&quot;;">For
+the first two programs you will be applying OO techniques to creating a game.
+This term we will be creating a text based simulation of the game “chicken
+foot”. It starts with a deck of “cards” in our case. The cards have different
+numbers on the two ends (simulating a domino). Each card is called a “bone”.
+Each player is dealt 7 bones and the bones remaining are left in the “chicken
+yard”. The <span class="GramE">player</span> that has the largest double (where
+both numbers on a card are the same) place this bone in the field first. The
+players then rotate placing a bone that matches one of the numbers with a free
+side on the field. Any time a double is played, players attach up to 3 bones to
+the double (making for a “chicken foot”). In fact, when a double is played the
+ONLY bones that can be played are those that match the double otherwise the
+player <span class="GramE">has</span> to draw once. A chicken foot must be filled
+with 3 bones before the game may proceed. The initial double however is played
+to all four sides. The player who uses all of their bones wins. There is a
+point system for the other players based on the bones left in each player’s
+hands. The goal is to get the fewest points possible.</span></p>
+
+<p class="MsoNormal" style="text-align:justify;"><span style="font-family:&quot;Palatino&quot;,&quot;serif&quot;;">&#160;</span></p>
+
+<p class="MsoNormal" style="text-align:justify;"><b><span style="font-family:&quot;Palatino&quot;,&quot;serif&quot;;">To make this Object
+Oriented:</span></b></p>
+
+<p class="MsoNormal" style="text-align:justify;"><span style="font-family:&quot;Palatino&quot;,&quot;serif&quot;;">You
+will want to first think about breaking this down into a series of classes and
+create them independent of the entire game. Here are some suggestions to start
+with. You may alter this set of classes but not reduce the number of classes
+required.</span></p>
+
+<ol style="margin-top:0in;" start="1" type="1">
+ <li class="MsoNormal" style="text-align:justify;"><span style="font-family:&quot;Palatino&quot;,&quot;serif&quot;;">Bone class – that creates a card
+     that has two ends with values that range from 1-9</span></li>
+ <li class="MsoNormal" style="text-align:justify;"><span style="font-family:&quot;Palatino&quot;,&quot;serif&quot;;">Chicken yard class – that manages
+     the “deck” of cards that can be drawn from, including shuffling the deck</span></li>
+ <li class="MsoNormal" style="text-align:justify;"><span style="font-family:&quot;Palatino&quot;,&quot;serif&quot;;">Field class – that manages what
+     bones have free sides and when a chicken foot is being played requiring
+     certain actions</span></li>
+ <li class="MsoNormal" style="text-align:justify;"><span style="font-family:&quot;Palatino&quot;,&quot;serif&quot;;">Game class – that manages the interactions
+     of the field, chicken yard, and players’ turns</span></li>
+ <li class="MsoNormal" style="text-align:justify;"><span style="font-family:&quot;Palatino&quot;,&quot;serif&quot;;">Player class – that manages a
+     player’s hand and score</span></li>
+</ol>
+
+<p class="MsoNormal" style="text-align:justify;"><span style="font-family:&quot;Palatino&quot;,&quot;serif&quot;;">&#160;</span></p>
+
+<p class="MsoNormal" style="text-align:justify;"><span style="font-family:&quot;Palatino&quot;,&quot;serif&quot;;">Anything
+that is similar between these or other classes that you write should be pulled
+up to be part of a base class. For example, classes that manage collections of
+items may be derived from a common base class that manages the collection.</span></p>
+
+<p class="MsoNormal" style="text-align:justify;"><span style="font-family:&quot;Palatino&quot;,&quot;serif&quot;;">&#160;</span></p>
+
+<p class="MsoNormal" style="text-align:justify;"><span style="font-family:&quot;Palatino&quot;,&quot;serif&quot;;">&#160;</span></p>
+
+<h1><span>In Two Stages:</span></h1>
+
+<p class="MsoNormal" style="text-align:justify;"><span style="font-family:&quot;Palatino&quot;,&quot;serif&quot;;">For
+the first phase of the project (Program #1), your goal will be to establish the
+<b>bone</b>, <b>chicken yard</b> and <b>player</b> classes.
+It is expected that bones will be shuffled, dealt, players can draw bones, and
+points managed for what bones the player holds during program #1. It is NOT
+expected that the player will physically play the game in program #1. Select
+the best data structure from CS260 Data Structures for chicken yard and
+player’s hand for fast retrieval and discuss in your design <span class="SpellE">writeup</span>
+why the data structure was selected an how it meets the requirements for run
+time efficiency.</span></p>
+
+<p class="MsoNormal" style="text-align:justify;"><span style="font-family:&quot;Palatino&quot;,&quot;serif&quot;;">&#160;</span></p>
+
+<p class="MsoNormal" style="text-align:justify;"><span style="font-family:&quot;Palatino&quot;,&quot;serif&quot;;">For
+the second phase (Program #2), the <b>field
+</b>and <b>game</b> classes must be added.
+It <b>IS</b> expected that the players will
+physically be playing the game for Program #2.<span>&#160;
+</span>In program #2 you are required to implement an array of linear linked
+lists to map the field. Select another data structure to keep track of each of
+the free ends. Again pick a data structure that provides for fast retrieval and
+discuss in your design <span class="SpellE">writeup</span> why the data structure
+was selected and how it meets the requirements for run time efficiency.</span></p>
+
+<p class="MsoNormal" style="text-align:justify;"><span style="font-family:&quot;Palatino&quot;,&quot;serif&quot;;">&#160;</span></p>
+
+<p class="MsoNormal" style="text-align:justify;"><span style="font-family:&quot;Palatino&quot;,&quot;serif&quot;;">In
+Program #2, apply the concept of Dynamic binding to how the different players
+are managed in the game class. At least one function must be pure virtual so
+that you experience abstract base classes in your design.</span></p>
+
+<p class="MsoNormal" style="text-align:justify;"><span style="font-family:&quot;Palatino&quot;,&quot;serif&quot;;">&#160;</span></p>
+
+<p class="MsoNormal" style="text-align:justify;"><span style="font-family:&quot;Palatino Linotype&quot;,&quot;serif&quot;;">Implementation
+of the data structures requires full support of insert, removal</span><i><span style="font-size:10.0pt;font-family:
+&quot;Palatino Linotype&quot;,&quot;serif&quot;;">, </span></i><span style="font-family:&quot;Palatino Linotype&quot;,&quot;serif&quot;;">display,
+retrieval, and remove-all. If a balanced tree is selected, “removal” of an
+individual item is not expected to be implemented. In such cases please discuss
+alternatives with your instructor.</span></p>
+
+<p class="MsoNormal" style="text-align:justify;"><span style="font-family:&quot;Palatino Linotype&quot;,&quot;serif&quot;;">&#160;</span></p>
+
+<p class="MsoNormal" style="text-align:justify;"><b><span style="font-family:&quot;Palatino Linotype&quot;,&quot;serif&quot;;">You are required
+to make your program simulate the game with players instead of asking user to
+enter input. It would take a long time to play a game if you allow user
+interaction which makes it hard to test and debug. The program should display
+game progress in an easy to read manner, such as showing player’s hand and
+current field information etc.</span></b></p>
+
+<p class="MsoNormal" style="text-align:justify;"><span style="font-family:&quot;Palatino Linotype&quot;,&quot;serif&quot;;">&#160;</span></p>
+
+<p class="MsoNormal">&#160;</p>
+
+</div>
+
+
+
+
+<script type="text/javascript" src="/d2l/common/math/MathML.js?v=10.7.2.7109-197 "></script><script type="text/javascript">document.addEventListener('DOMContentLoaded', function() { D2LMathML.DesktopInit('https://s.brightspace.com/lib/mathjax/2.6.1/MathJax.js?config=MML_HTMLorMML','https://s.brightspace.com/lib/mathjax/2.6.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML'); });</script></body></html>
