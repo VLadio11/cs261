@@ -8,6 +8,7 @@ private:
     std::vector<Bone> bones;
 public:
     Boneyard();
+    void shuffle();
 };
 
 #endif

@@ -1,5 +1,6 @@
 #include "Boneyard.h"
 #include <iostream>
+#include <algorithm>
 
 Boneyard::Boneyard()
 {
@@ -10,4 +11,9 @@ Boneyard::Boneyard()
             bones.push_back(*bone);
         }
     }
+}
+
+void Boneyard::shuffle()
+{
+    std::random_shuffle(bones.begin(), bones.end());
 }
