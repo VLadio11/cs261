@@ -7,6 +7,8 @@
 const int INITIAL_HAND_SIZE = 7;
 
 int main(int argc, char** argv) {
+    std::cout << "CS 261 - Project 1 - Phil Stephenson" << std::endl;
+
     std::srand(std::time(0));
 
     Player* p1 = new Player(1);
