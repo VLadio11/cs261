@@ -9,6 +9,8 @@ private:
 public:
     Boneyard();
     void shuffle();
+    Bone draw();
+    void printBoneyard();
 };
 
 #endif

@@ -17,3 +17,18 @@ void Boneyard::shuffle()
 {
     std::random_shuffle(bones.begin(), bones.end());
 }
+
+Bone Boneyard::draw()
+{
+    Bone b = bones.back();
+    bones.pop_back();
+    return b;
+}
+
+void Boneyard::printBoneyard()
+{
+    std::cout << "Boneyard:" << std::endl;
+    for (std::vector<Bone>::iterator i = bones.begin(); i != bones.end(); i++) {
+        std::cout << i->getLeft() << "," << i->getRight() << std::endl;
+    }
+}
