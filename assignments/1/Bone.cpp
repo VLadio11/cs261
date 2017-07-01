@@ -15,3 +15,8 @@ int Bone::getRight()
 {
     return this->right;
 }
+
+bool Bone::isDouble()
+{
+    return this->left == this->right;
+}
