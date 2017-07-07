@@ -14,7 +14,7 @@ public:
     Player();
     Player(int id);
     int getId();
-    void draw(Boneyard* yard);
+    void draw(std::shared_ptr<Boneyard> yard);
     void printHand();
 };
 

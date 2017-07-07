@@ -7,7 +7,7 @@ Boneyard::Boneyard()
     // Initialize a double-nine set
     for (int i = 0; i < 9; i++) {
         for (int j = i; j < 9; j++) {
-            bones.emplace_back(new Bone(i, j));
+            bones.emplace_back(std::make_shared<Bone>(i, j));
         }
     }
 }

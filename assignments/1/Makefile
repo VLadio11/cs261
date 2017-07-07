@@ -1,7 +1,7 @@
 all: chickenfoot
 
-chickenfoot: bone.o boneyard.o player.o field.o chickenfoot.o
-	g++ -Wall -std=gnu++0x Bone.o Boneyard.o Player.o Field.o ChickenFoot.o -o chickenfoot
+chickenfoot: bone.o boneyard.o player.o field.o game.o chickenfoot.o
+	g++ -Wall -std=gnu++0x Bone.o Boneyard.o Player.o Field.o Game.o ChickenFoot.o -o chickenfoot
 
 bone.o: Bone.cpp
 	g++ -Wall -std=gnu++0x -c Bone.cpp
@@ -14,6 +14,9 @@ player.o: Player.cpp
 
 field.o: Field.cpp
 	g++ -Wall -std=gnu++0x -c Field.cpp
+
+game.o: Game.cpp
+	g++ -Wall -std=gnu++0x -c Game.cpp
 
 chickenfoot.o: ChickenFoot.cpp
 	g++ -Wall -std=gnu++0x -c ChickenFoot.cpp

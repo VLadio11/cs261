@@ -11,7 +11,7 @@ int Player::getId()
     return this->id;
 }
 
-void Player::draw(Boneyard* yard)
+void Player::draw(std::shared_ptr<Boneyard> yard)
 {
     hand.push_back(yard->draw());
 }
