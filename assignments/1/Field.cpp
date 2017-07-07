@@ -1,8 +1,7 @@
 #include "Field.h"
 
-Field::Field(): head(nullptr) {}
-
-Field::~Field()
+Field::Field(std::shared_ptr<Bone> first_double)
 {
-    delete head;
+    head = std::make_shared<node>();
+    head->bone = first_double;
 }

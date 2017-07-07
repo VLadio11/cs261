@@ -1,18 +1,18 @@
 #ifndef FIELD_H
 #define FIELD_H
 #include <vector>
+#include <memory>
 #include "Bone.h"
 
 class Field {
 private:
     struct node {
-        Bone b;
-        std::vector<node*> connections;
+        std::shared_ptr<Bone> bone;
+        std::vector< std::shared_ptr<node> > connections;
     };
-    node* head;
+    std::shared_ptr<node> head;
 public:
-    Field();
-    ~Field();
+    Field(std::shared_ptr<Bone> first_double);
 };
 
 #endif

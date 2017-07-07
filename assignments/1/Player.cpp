@@ -1,4 +1,5 @@
 #include <iostream>
+#include <algorithm>
 #include "Player.h"
 
 Player::Player(int id)
@@ -23,3 +24,9 @@ void Player::printHand()
         std::cout << (*i)->getLeft() << "," << (*i)->getRight() << std::endl;
     }
 }
+
+std::shared_ptr<Bone> Player::getDouble(int number)
+{
+    auto result = std::find_if(hand.begin(), hand.end(), isDouble(number));
+    return (result != hand.end()) ? *result : nullptr;
+};
