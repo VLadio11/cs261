@@ -28,5 +28,9 @@ void Player::printHand()
 std::shared_ptr<Bone> Player::getDouble(int number)
 {
     auto result = std::find_if(hand.begin(), hand.end(), isDouble(number));
-    return (result != hand.end()) ? *result : nullptr;
+    if (result != hand.end()) {
+        hand.erase(std::remove_if(hand.begin(), hand.end(), isDouble(number)), hand.end());
+        return *result;
+    }
+    return nullptr;
 };

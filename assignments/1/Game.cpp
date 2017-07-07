@@ -17,7 +17,12 @@ void Game::start()
         }
     }
 
-    // @todo: Find highest double and construct Field
+    std::shared_ptr<Bone> highest_double = getLargestDouble();
+    while (highest_double != nullptr) {
+        field = std::make_shared<Field>(highest_double);
+        // @todo: Play round
+        highest_double = getLargestDouble();
+    }
 
     boneyard->printBoneyard();
     for (std::vector< std::shared_ptr<Player> >::iterator i = players.begin(); i != players.end(); i++) {
@@ -26,7 +31,15 @@ void Game::start()
     return;
 }
 
-std::shared_ptr<Bone> getLargestDouble()
+std::shared_ptr<Bone> Game::getLargestDouble()
 {
+    for (int i = 0; i < 9; i++) {
+        for (std::vector< std::shared_ptr<Player> >::iterator it = players.begin(); it != players.end(); it++) {
+            std::shared_ptr<Bone> b = (*it)->getDouble(i);
+            if (b != nullptr) {
+                return b;
+            }
+        }
+    }
     return nullptr;
 }
