@@ -19,7 +19,7 @@ void Player::draw(Boneyard* yard)
 void Player::printHand()
 {
     std::cout << "Player " << getId() << " hand:" << std::endl;
-    for (std::vector<Bone>::iterator i = hand.begin(); i != hand.end(); i++) {
-        std::cout << i->getLeft() << "," << i->getRight() << std::endl;
+    for (std::vector< std::shared_ptr<Bone> >::iterator i = hand.begin(); i != hand.end(); i++) {
+        std::cout << (*i)->getLeft() << "," << (*i)->getRight() << std::endl;
     }
 }

@@ -3,11 +3,12 @@
 #include "Bone.h"
 #include "Boneyard.h"
 #include <vector>
+#include <memory>
 
 class Player {
 private:
     int id;
-    std::vector<Bone> hand;
+    std::vector< std::shared_ptr<Bone> > hand;
 
 public:
     Player();

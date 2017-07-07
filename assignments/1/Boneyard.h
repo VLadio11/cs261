@@ -2,14 +2,15 @@
 #define BONEYARD_H
 #include "Bone.h"
 #include <vector>
+#include <memory>
 
 class Boneyard {
 private:
-    std::vector<Bone> bones;
+    std::vector< std::shared_ptr<Bone> > bones;
 public:
     Boneyard();
     void shuffle();
-    Bone draw();
+    std::shared_ptr<Bone> draw();
     void printBoneyard();
 };
 
