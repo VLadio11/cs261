@@ -10,7 +10,11 @@ int main()
     //PLEASE PUT YOUR CODE HERE to call the function assigned
     cout << "sum of all integers:" << sum(head) << endl;
 
+    int count = removeTwo(head);
+    cout << "After removing all 2s:";
     display(head);
+    cout << "Removed " << count << " 2s" << endl;
+
     destroy(head);
     
     return 0;
