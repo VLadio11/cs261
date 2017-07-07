@@ -19,5 +19,5 @@ void destroy(node * head[]); //supplied
 
 /* *****************YOUR TURN! ******************************** */
 //Write your function prototype here:
-
-
+int sum(node* head[]);
+int removeTwo(node* head[]);

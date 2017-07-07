@@ -8,9 +8,7 @@ int main()
     display(head);
 
     //PLEASE PUT YOUR CODE HERE to call the function assigned
-
-
-    
+    cout << "sum of all integers:" << sum(head) << endl;
 
     display(head);
     destroy(head);
