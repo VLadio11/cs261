@@ -8,6 +8,7 @@
 class Player {
 private:
     int id;
+    int score;
     std::vector< std::shared_ptr<Bone> > hand;
     struct isDouble {
         int m_value;
@@ -24,6 +25,10 @@ public:
     void draw(std::shared_ptr<Boneyard> yard);
     void printHand();
     std::shared_ptr<Bone> getDouble(int number);
+    int getScore();
+    int getCurrentHandTotal();
+    void setScore(int s);
+    void discardAll();
 };
 
 #endif

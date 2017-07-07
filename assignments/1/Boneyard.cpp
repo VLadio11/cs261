@@ -2,18 +2,14 @@
 #include <iostream>
 #include <algorithm>
 
-Boneyard::Boneyard()
+void Boneyard::initialize()
 {
-    // Initialize a double-nine set
+    bones.clear();
     for (int i = 0; i < 9; i++) {
         for (int j = i; j < 9; j++) {
             bones.emplace_back(std::make_shared<Bone>(i, j));
         }
     }
-}
-
-void Boneyard::shuffle()
-{
     std::random_shuffle(bones.begin(), bones.end());
 }
 

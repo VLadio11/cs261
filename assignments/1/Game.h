@@ -13,7 +13,11 @@ private:
     std::vector< std::shared_ptr<Player> > players;
     std::shared_ptr<Boneyard> boneyard;
     std::shared_ptr<Field> field;
+    bool played_rounds[9]; // This will keep track of which double rounds have already been played
+
     std::shared_ptr<Bone> getLargestDouble();
+    void beginRound();
+    void endRound();
 public:
     Game(int num_of_players);
     void start();

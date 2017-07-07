@@ -33,4 +33,28 @@ std::shared_ptr<Bone> Player::getDouble(int number)
         return *result;
     }
     return nullptr;
-};
+}
+
+int Player::getScore()
+{
+    return score;
+}
+
+int Player::getCurrentHandTotal()
+{
+    int hand_total = 0;
+    for (std::vector< std::shared_ptr<Bone> >::iterator i = hand.begin(); i != hand.end(); i++) {
+        hand_total = hand_total + (*i)->getLeft() + (*i)->getRight();
+    }
+    return hand_total;
+}
+
+void Player::setScore(int s)
+{
+    score = s;
+}
+
+void Player::discardAll()
+{
+    hand.clear();
+}

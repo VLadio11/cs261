@@ -8,8 +8,7 @@ class Boneyard {
 private:
     std::vector< std::shared_ptr<Bone> > bones;
 public:
-    Boneyard();
-    void shuffle();
+    void initialize();
     std::shared_ptr<Bone> draw();
     void printBoneyard();
 };

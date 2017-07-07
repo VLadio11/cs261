@@ -5,12 +5,18 @@ Game::Game(int num_of_players)
     boneyard = std::make_shared<Boneyard>();
     for (int i = 0; i < num_of_players; i++) {
         players.emplace_back(std::make_shared<Player>(i));
+        played_rounds[i] = false;
     }
 }
 
 void Game::start()
 {
-    boneyard->shuffle();
+    beginRound();
+}
+
+void Game::beginRound()
+{
+    boneyard->initialize();
     for (int i = 0; i < INITIAL_HAND_SIZE; i++) {
         for (std::vector< std::shared_ptr<Player> >::iterator i = players.begin(); i != players.end(); i++) {
             (*i)->draw(boneyard);
@@ -24,11 +30,17 @@ void Game::start()
         highest_double = getLargestDouble();
     }
 
-    boneyard->printBoneyard();
+    endRound();
+}
+
+void Game::endRound()
+{
     for (std::vector< std::shared_ptr<Player> >::iterator i = players.begin(); i != players.end(); i++) {
-        (*i)->printHand();
+        int current_score = (*i)->getScore();
+        int hand_total = (*i)->getCurrentHandTotal();
+        (*i)->setScore(current_score + hand_total);
+        (*i)->discardAll();
     }
-    return;
 }
 
 std::shared_ptr<Bone> Game::getLargestDouble()
