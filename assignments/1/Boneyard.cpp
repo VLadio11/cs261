@@ -9,6 +9,7 @@ Boneyard::Boneyard()
         for (int j = i; j < 9; j++) {
             Bone* bone = new Bone(i, j);
             bones.push_back(*bone);
+            delete bone;
         }
     }
 }
