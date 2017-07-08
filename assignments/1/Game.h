@@ -16,6 +16,7 @@ private:
     bool played_rounds[9]; // This will keep track of which double rounds have already been played
 
     std::shared_ptr<Bone> getLargestDouble();
+    int getHighestUnplayedRound(bool* played);
     void beginRound();
     void endRound();
 public:
