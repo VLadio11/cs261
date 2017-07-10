@@ -18,5 +18,5 @@ void duplicate(node * & new_copy); //provides a duplicate copy of the list
 
 /* *****************YOUR TURN! ******************************** */
 //Write your function prototype here:
-
+void addHead(node*& head, int value);
 

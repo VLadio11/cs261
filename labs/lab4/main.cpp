@@ -4,7 +4,6 @@ using namespace std;
 int main()
 {
     node * head = NULL;
-    node * copy = NULL;
     build(head);
     display(head);
 
