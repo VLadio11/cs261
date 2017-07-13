@@ -1,7 +1,7 @@
 all: chickenfoot
 
 chickenfoot: bone.o boneyard.o player.o field.o game.o chickenfoot.o
-	g++ -Wall -std=gnu++0x Bone.o Boneyard.o Player.o Field.o Game.o ChickenFoot.o -o chickenfoot
+	g++ -g -Wall -std=gnu++0x Bone.o Boneyard.o Player.o Field.o Game.o ChickenFoot.o -o chickenfoot
 
 bone.o: Bone.cpp
 	g++ -Wall -std=gnu++0x -c Bone.cpp

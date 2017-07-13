@@ -5,8 +5,8 @@
 void Boneyard::initialize()
 {
     bones.clear();
-    for (int i = 0; i < 9; i++) {
-        for (int j = i; j < 9; j++) {
+    for (int i = 0; i <= 9; i++) {
+        for (int j = i; j <= 9; j++) {
             bones.emplace_back(std::make_shared<Bone>(i, j));
         }
     }

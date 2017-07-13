@@ -25,6 +25,7 @@ public:
     void draw(std::shared_ptr<Boneyard> yard);
     void printHand();
     std::shared_ptr<Bone> getDouble(int number);
+    bool hasDouble(int number);
     int getScore();
     int getCurrentHandTotal();
     void setScore(int s);

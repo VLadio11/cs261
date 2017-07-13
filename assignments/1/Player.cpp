@@ -35,6 +35,12 @@ std::shared_ptr<Bone> Player::getDouble(int number)
     return nullptr;
 }
 
+bool Player::hasDouble(int number)
+{
+    auto result = std::find_if(hand.begin(), hand.end(), isDouble(number));
+    return (result != hand.end()) ? true : false;
+}
+
 int Player::getScore()
 {
     return score;
