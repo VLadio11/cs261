@@ -1,12 +1,13 @@
 #include "Boneyard.h"
+#include "Game.h"
 #include <iostream>
 #include <algorithm>
 
 void Boneyard::initialize()
 {
     bones.clear();
-    for (int i = 0; i <= 9; i++) {
-        for (int j = i; j <= 9; j++) {
+    for (int i = 0; i <= DOMINOES_SET_SIZE; i++) {
+        for (int j = i; j <= DOMINOES_SET_SIZE; j++) {
             bones.emplace_back(std::make_shared<Bone>(i, j));
         }
     }
