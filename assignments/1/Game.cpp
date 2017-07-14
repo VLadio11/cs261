@@ -21,21 +21,21 @@ void Game::start(int highest_double)
         if (DEBUG) {
             boneyard->printBoneyard();
         }
-        for (int j = 0; j < INITIAL_HAND_SIZE; j++) {
+        for (int i = 0; i < INITIAL_HAND_SIZE; i++) {
             for (std::vector< std::shared_ptr<Player> >::iterator j = players.begin(); j != players.end(); j++) {
                 (*j)->draw(boneyard);
             }
         }
         if (DEBUG) {
-            for (std::vector< std::shared_ptr<Player> >::iterator j = players.begin(); j != players.end(); j++) {
-                (*j)->printHand();
+            for (std::vector< std::shared_ptr<Player> >::iterator i = players.begin(); i != players.end(); i++) {
+                (*i)->printHand();
             }
         }
-        for (std::vector< std::shared_ptr<Player> >::iterator j = players.begin(); j != players.end(); j++) {
-            if ((*j)->hasDouble(highest_double)) {
-                std::shared_ptr<Bone> hd_bone = (*j)->getDouble(highest_double);
+        for (std::vector< std::shared_ptr<Player> >::iterator i = players.begin(); i != players.end(); i++) {
+            if ((*i)->hasDouble(highest_double)) {
+                std::shared_ptr<Bone> hd_bone = (*i)->getDouble(highest_double);
                 field = std::make_shared<Field>(hd_bone);
-                playRound(j - players.begin());
+                playRound(i - players.begin());
                 played_rounds[highest_double] = true;
                 break;
             }

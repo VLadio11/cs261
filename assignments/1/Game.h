@@ -9,7 +9,7 @@
 const int INITIAL_HAND_SIZE = 7;
 static const int DOMINOES_SET_SIZE = 9;
 
-const bool DEBUG = true;
+const bool DEBUG = false;
 
 class Game {
 private:
