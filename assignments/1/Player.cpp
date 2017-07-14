@@ -2,7 +2,7 @@
 #include <algorithm>
 #include "Player.h"
 
-Player::Player(int id)
+Player::Player(int id): score(0)
 {
     this->id = id;
 }

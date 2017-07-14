@@ -19,7 +19,6 @@ private:
     };
 
 public:
-    Player();
     Player(int id);
     int getId();
     void draw(std::shared_ptr<Boneyard> yard);
