@@ -62,9 +62,14 @@ void Game::start(int highest_double)
     }
 }
 
-void Game::playRound(int first_player_index)
+void Game::playRound(unsigned int first_player_index)
 {
-    // @todo
+    std::vector< std::shared_ptr<Player> >::iterator i;
+    if (first_player_index == players.size() - 1) {
+        i = players.begin();
+    } else {
+        i = players.begin() + first_player_index + 1;
+    }
     return;
 }
 

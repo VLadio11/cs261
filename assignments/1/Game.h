@@ -20,7 +20,7 @@ private:
 
     int getHighestUnplayedRound(bool* played);
     int getNextHighestUnplayedRound(bool* played, int round);
-    void playRound(int first_player_index);
+    void playRound(unsigned int first_player_index);
 public:
     Game(int num_of_players);
     void start(int highest_double);
