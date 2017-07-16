@@ -18,7 +18,9 @@ node* removeTwoRecursive(node *& head)
         return NULL;
     } else {
         if (head->data == 2) {
-            return removeTwoRecursive(head->next);
+            node* newHead = head->next;
+            delete head;
+            return removeTwoRecursive(newHead);
         } else {
             head->next = removeTwoRecursive(head->next);
             return head;
