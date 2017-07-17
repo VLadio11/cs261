@@ -1,0 +1,85 @@
+Phil Stephenson
+Assignments 1 & 2
+
+Design thoughts:
+
+Despite not having completed a fully-functional, simulated game according to the specification, I feel good about the solution that I turned in.
+Specifically, I feel that I encapsulated the game and its domain into an object oriented solution that could potentially scale, and with more time,
+could become something good. In the spirit of this course, I will use the rest of this document to explain the classes I built, the interfaces
+I used, and why.
+
+Game.cpp:
+The game class is the primary interface used to instantiate and start a game of ChickenFoot. As you can see in ChickenFoot.cpp,
+creating a game involves calling the Game constructor with an integer that represents the number of players that will play the game.
+Then, the only public method is:
+    void start(int highest_double);
+
+start accepts an integer that represents the highest double in the set of dominoes. This would allow clients to use different sized sets
+if they chose to play with more or less players.
+
+The Game class is certainly the most complex class in my project. It manages the relationship between the players and their scores, the boneyard,
+and the field. It also manages the game's mechanics. Specifically, it handles the beginning and ending of rounds depending on which doubles
+are dealt to players and which 'double rounds' have already been played. If I could do this project over again, I would likely have spent a lot less
+time working on the round mechanics. I spent a lot of time trying to implement a 'clever' recursive function that would try to decide 
+how to play the next round. After having spent so much time building out the game class, I was left very little time to work on
+the actual field mapping.
+
+Field.cpp:
+The field class represents a modeling of the actual Bones played by players during the game, and the connections those bones make between eachother.
+Its constructor accepts a single pointer to the first double to be played in the round, and that double becomes the middle of the Field (the head pointer).
+
+My idea for the Field class, as I discussed on the D2L discussion board was to use an acyclic directed graph. I think that this data structure
+most accurately reflected the game board, as each bone may be a vertex of either 4 (the first double), 3 (any other double beginning a chicken foot),
+or 1 outgoing bones. Whether this data structure was the easiest to work with may be another story and probably could be argued.
+Considering that I actually never fully implemented a lot of the Field interface, I'm left somewhat in the dark on whether this was the
+right choice to make.
+
+My Field class contains a public method getPlayableBones, which is intended to return to the caller a vector of Bone pointers that
+represent the available Bones on which players may play. As mentioned above, I ran out of time to fully implement this class, but in theory,
+what I would like to do here is:
+    1. First, check if the head of the Field contains 4 connections, if not, return the head bone since there must be 4 bones played
+    on the first double before play can continue.
+    2. If the head has 4 connections, then we can traverse the structure looking for other bones that are playable.
+    3. If there is an unfinished chicken foot, return that bone since it must be finished before play can continue.
+    4. If no unfinished chicken feet exist, I'll need to traverse the entire structure, storing open Bones into the vector and finally return the set.
+
+Player.cpp:
+The Player class, obviously represents a player. Its interface is much more substantial, because the player is what interacts with the game
+most often and in interesting ways. I have organized the player interface around actions that a player would take during the game, 
+and in cases in which those actions contained dependent objects, I have tried to pass those objects into the methods. For example:
+    void draw(std::shared_ptr<Boneyard> yard); // Draw accepts the Boneyard ptr, because a player draws *from* the Boneyard
+    bool canPlay(std::shared_ptr<Field> field); // canPlay accepts the field, because whether or not a player can play is a function of the state of the field.
+
+An interesting design choice I made here on the Player class:
+At the end of a round, a player's score gets updated based on the number of bones in the players hand and the values on those bones.
+My first thought here was to write a public function:
+    void updateScore();
+
+But instead, I broke this out into a couple of methods:
+    int getCurrentHandTotal();
+    void setScore(int s);
+
+Now, at the end of a round, the Game class actually calls getCurrentHandTotal(), getScore() (to get the player's current score), and finally
+sets the player's score after computing the player's new total score. I chose to define these methods this way because I think this was the most
+flexible option. Placing all of the logic in a single function updateScore() means that there is very specific, ChickenFoot game logic
+in the Player class. If we decided we wanted to use the Player class for another game, that interface would not be as helpful.
+
+Boneyard.cpp:
+The Boneyard class is a simple, container class that holds pointers to the Bones in the Boneyard. It has an initialize() method that
+will create a new set of Bones defined by the constant DOMINOES_SET_SIZE (found in Game.h) and shuffles them. It also has a printBoneyard() method.
+
+Bone.cpp:
+This class is very simple and just contains 2 integers, left and right that represent the values on each Bone. It also has a public method
+isDouble() which is important with analyzing the Field.
+
+One potential opportunity for improvement with the Bone class that I considered, was to actually extend the Bone class and create
+a DoubleBone.cpp. If the Bone class became more complicated, this may have been a helpful abstraction for immediately knowing whether or not you
+were looking at a single, or double bone.
+
+
+
+Conclusion:
+In conclusion, I found this project to be very interesting and helpful. Despite not "finishing", I spent quite a lot of time on this project!
+Specifically, this is the first program I've written in C++ that makes extensive usage of the C++ STL. I've used the std::vector 
+and std::shared_ptr classes quite a bit here, and working with those interfaces has been very educational. I regret not spending 
+more time implementing the actual field mapping, but I think if I had more time I would have enjoyed continuing with the solution I had planned.
