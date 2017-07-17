@@ -35,7 +35,7 @@ void Game::start(int highest_double)
             if ((*i)->hasDouble(highest_double)) {
                 std::shared_ptr<Bone> hd_bone = (*i)->getDouble(highest_double);
                 field = std::make_shared<Field>(hd_bone);
-                playRound(i - players.begin());
+                playRound(i);
                 played_rounds[highest_double] = true;
                 break;
             }
@@ -62,15 +62,23 @@ void Game::start(int highest_double)
     }
 }
 
-void Game::playRound(unsigned int first_player_index)
+void Game::playRound(std::vector< std::shared_ptr<Player> >::iterator first_player)
 {
-    std::vector< std::shared_ptr<Player> >::iterator i;
-    if (first_player_index == players.size() - 1) {
-        i = players.begin();
-    } else {
-        i = players.begin() + first_player_index + 1;
+    std::vector< std::shared_ptr<Player> >::iterator i = getNextPlayerIterator(first_player);
+    while ((*i)->hasPassed() == false) {
+        if ((*i)->canPlay(field)) {
+            // Play
+        } else {
+            (*i)->setHasPassed(true);
+        }
+        i = getNextPlayerIterator(i);
     }
     return;
+}
+
+std::vector< std::shared_ptr<Player> >::iterator Game::getNextPlayerIterator(std::vector< std::shared_ptr<Player> >::iterator it)
+{
+    return (it == players.end()) ? players.begin() : it++;
 }
 
 int Game::getHighestUnplayedRound(bool* played)

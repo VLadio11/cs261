@@ -2,10 +2,7 @@
 #include <algorithm>
 #include "Player.h"
 
-Player::Player(int id): score(0)
-{
-    this->id = id;
-}
+Player::Player(int m_id): id(m_id), score(0), has_passed(false) {}
 
 int Player::getId()
 {
@@ -23,6 +20,12 @@ void Player::printHand()
     for (std::vector< std::shared_ptr<Bone> >::iterator i = hand.begin(); i != hand.end(); i++) {
         std::cout << (*i)->getLeft() << "," << (*i)->getRight() << std::endl;
     }
+}
+
+bool Player::canPlay(std::shared_ptr<Field> field)
+{
+    // @todo
+    return false;
 }
 
 std::shared_ptr<Bone> Player::getDouble(int number)
@@ -64,4 +67,14 @@ void Player::setScore(int s)
 void Player::discardAll()
 {
     hand.clear();
+}
+
+void Player::setHasPassed(bool flag)
+{
+    has_passed = flag;
+}
+
+bool Player::hasPassed()
+{
+    return has_passed;
 }

@@ -20,7 +20,8 @@ private:
 
     int getHighestUnplayedRound(bool* played);
     int getNextHighestUnplayedRound(bool* played, int round);
-    void playRound(unsigned int first_player_index);
+    void playRound(std::vector< std::shared_ptr<Player> >::iterator first_player);
+    std::vector< std::shared_ptr<Player> >::iterator getNextPlayerIterator(std::vector< std::shared_ptr<Player> >::iterator it);
 public:
     Game(int num_of_players);
     void start(int highest_double);
