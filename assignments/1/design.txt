@@ -28,7 +28,7 @@ Field.cpp:
 The field class represents a modeling of the actual Bones played by players during the game, and the connections those bones make between eachother.
 Its constructor accepts a single pointer to the first double to be played in the round, and that double becomes the middle of the Field (the head pointer).
 
-My idea for the Field class, as I discussed on the D2L discussion board was to use an acyclic directed graph. I think that this data structure
+My idea for the Field class, as I discussed on the D2L discussion board was to use a non-binary tree. I think that this data structure
 most accurately reflected the game board, as each bone may be a vertex of either 4 (the first double), 3 (any other double beginning a chicken foot),
 or 1 outgoing bones. Whether this data structure was the easiest to work with may be another story and probably could be argued.
 Considering that I actually never fully implemented a lot of the Field interface, I'm left somewhat in the dark on whether this was the
@@ -39,7 +39,7 @@ represent the available Bones on which players may play. As mentioned above, I r
 what I would like to do here is:
     1. First, check if the head of the Field contains 4 connections, if not, return the head bone since there must be 4 bones played
     on the first double before play can continue.
-    2. If the head has 4 connections, then we can traverse the structure looking for other bones that are playable.
+    2. If the head has 4 connections, then we can traverse the tree looking for other bones that are playable.
     3. If there is an unfinished chicken foot, return that bone since it must be finished before play can continue.
     4. If no unfinished chicken feet exist, I'll need to traverse the entire structure, storing open Bones into the vector and finally return the set.
 
