@@ -25,7 +25,7 @@ void Player::printHand()
 
 bool Player::canPlay(std::shared_ptr<Field> field)
 {
-    // @todo
+    std::unordered_map< int, std::shared_ptr<Bone> > playable_bones = field->getPlayableBones();
     return false;
 }
 
