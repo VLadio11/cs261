@@ -23,8 +23,14 @@ std::shared_ptr<Bone> Boneyard::draw()
 
 void Boneyard::printBoneyard()
 {
+    std::cout << std::endl;
     std::cout << "Boneyard:" << std::endl;
     for (std::vector< std::shared_ptr<Bone> >::iterator i = bones.begin(); i != bones.end(); i++) {
-        std::cout << (*i)->getLeft() << "," << (*i)->getRight() << std::endl;
+        std::cout << (*i)->getLeft() << "," << (*i)->getRight() << " ";
+        unsigned int index = i - bones.begin();
+        if (index > 0 && (index + 1) % 5 == 0) {
+            std::cout << std::endl;
+        }
     }
+    std::cout << std::endl;
 }

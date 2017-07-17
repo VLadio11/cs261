@@ -13,6 +13,7 @@ private:
     std::shared_ptr<node> head;
 public:
     Field(std::shared_ptr<Bone> first_double);
+    std::vector< std::shared_ptr<Bone> > getPlayableBones();
 };
 
 #endif

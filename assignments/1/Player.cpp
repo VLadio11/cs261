@@ -16,10 +16,11 @@ void Player::draw(std::shared_ptr<Boneyard> yard)
 
 void Player::printHand()
 {
-    std::cout << "Player " << getId() << " hand:" << std::endl;
+    std::cout << "Player " << getId() << " hand: ";
     for (std::vector< std::shared_ptr<Bone> >::iterator i = hand.begin(); i != hand.end(); i++) {
-        std::cout << (*i)->getLeft() << "," << (*i)->getRight() << std::endl;
+        std::cout << (*i)->getLeft() << "," << (*i)->getRight() << " ";
     }
+    std::cout << std::endl;
 }
 
 bool Player::canPlay(std::shared_ptr<Field> field)
