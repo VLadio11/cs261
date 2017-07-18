@@ -14,6 +14,30 @@ void duplicate(node* head, node*& newHead)
     }
 }
 
+node* removeTwoRecursive(node*& head)
+{
+    if (head == NULL) {
+        return NULL;
+    } else {
+        if (head->data == 2) {
+            if (head->next == NULL) {
+                head = NULL;
+                delete head;
+                return NULL;
+            } else {
+                node* tmp = head;
+                head = head->next;
+                head->previous = tmp->previous;
+                delete tmp;
+                return removeTwoRecursive(head);
+            }
+        } else {
+            return removeTwoRecursive(head->next);
+        }
+    }
+}
+
+
 void removeTwoFromBeginning(node*& head)
 {
     if (head == NULL || head->data != 2) {
@@ -29,6 +53,7 @@ void removeTwoFromBeginning(node*& head)
 int removeTwo(node*& head)
 {
     removeTwoFromBeginning(head);
+    removeTwoRecursive(head);
     return 0;
 }
 
