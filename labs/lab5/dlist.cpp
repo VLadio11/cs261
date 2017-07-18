@@ -21,8 +21,8 @@ node* removeTwoRecursive(node*& head)
     } else {
         if (head->data == 2) {
             if (head->next == NULL) {
-                head = NULL;
                 delete head;
+                head = NULL;
                 return NULL;
             } else {
                 node* tmp = head;
