@@ -1,0 +1,16 @@
+Phil Stephenson
+On Debugging with GDB:
+
+In this project I used the GDB debugger and valgrind quite extensively to find bugs and memory leaks respectively.
+
+I found GDB to be especially helpful, as I'd found myself running into segmentation faults while developing. I was able
+to just run the program in GDB, then run the 'backtrace' command to get a stack trace. I found this very useful
+in helping figure out where to look for the issue.
+
+I also used GDB to actually step through the code and try to find out where values were being set. I used
+breakpoints, played around the the layout views (layout src), and more.
+
+Valgrind was also quite helpful for finding memory leaks. However, because I decided to use the std::shared_ptr, 
+I ran into far fewer memory leaks than I would have if using just raw pointers!
+
+I look forward to continuing to explore these tools on future projects.
