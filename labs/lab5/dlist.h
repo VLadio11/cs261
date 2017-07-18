@@ -19,3 +19,5 @@ void destroy(node * &head); //supplied
 
 /* *****************YOUR TURN! ******************************** */
 /* place your prototype here */
+void duplicate(node* head, node*& newHead);
+int removeTwo(node*& head);
