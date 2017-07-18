@@ -3,7 +3,15 @@
 
 void duplicate(node* head, node*& newHead)
 {
-    return;
+    if (head) {
+        newHead = new node;
+        newHead->data = head->data;
+        newHead->next = NULL;
+        newHead->previous = head->previous;
+        duplicate(head->next, newHead->next);
+    } else {
+        newHead = NULL;
+    }
 }
 
 int removeTwo(node*& head)
