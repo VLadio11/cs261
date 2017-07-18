@@ -26,6 +26,11 @@ void Player::printHand()
 bool Player::canPlay(std::shared_ptr<Field> field)
 {
     std::unordered_map< int, std::shared_ptr<Bone> > playable_bones = field->getPlayableBones();
+    for (std::vector< std::shared_ptr<Bone> >::iterator i = hand.begin(); i != hand.end(); i++) {
+        if (playable_bones.find((*i)->getLeft()) != playable_bones.end() || playable_bones.find((*i)->getRight()) != playable_bones.end()) {
+            return true;
+        }
+    }
     return false;
 }
 
