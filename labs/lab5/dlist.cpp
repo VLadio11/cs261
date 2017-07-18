@@ -14,8 +14,21 @@ void duplicate(node* head, node*& newHead)
     }
 }
 
+void removeTwoFromBeginning(node*& head)
+{
+    if (head == NULL || head->data != 2) {
+        return;
+    }
+    node* tmp = head;
+    head = head->next;
+    head->previous = NULL;
+    delete tmp;
+    removeTwoFromBeginning(head);
+}
+
 int removeTwo(node*& head)
 {
+    removeTwoFromBeginning(head);
     return 0;
 }
 

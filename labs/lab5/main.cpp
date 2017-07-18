@@ -14,6 +14,9 @@ int main()
     display(copy);
     destroy(copy);
 
+    cout << "Removing twos recursively:";
+    removeTwo(head);
+
     display(head);
     destroy(head);    
     return 0;
