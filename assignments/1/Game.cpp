@@ -67,7 +67,9 @@ void Game::playRound(std::vector< std::shared_ptr<Player> >::iterator first_play
     std::vector< std::shared_ptr<Player> >::iterator i = getNextPlayerIterator(first_player);
     while ((*i)->hasPassed() == false) {
         if ((*i)->canPlay(field)) {
-            // Play
+            // This is here just as a placeholder so that we don't end up in an infinite loop.
+            // What should actually happen here is the player should play!
+            (*i)->setHasPassed(true);
         } else {
             (*i)->setHasPassed(true);
         }
