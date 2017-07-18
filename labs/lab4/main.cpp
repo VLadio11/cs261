@@ -8,7 +8,8 @@ int main()
     display(head);
 
     //PLEASE PUT YOUR CODE HERE to call the function assigned
-
+    std::cout << "Adding 3 to the head of the list:";
+    addHead(head, 3);
 
     display(head); //resulting list after your function call!
     destroy(head);
