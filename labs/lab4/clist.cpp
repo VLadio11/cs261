@@ -1,3 +1,4 @@
+// Phil Stephenson
 #include "clist.h"
 
 void addHead(node*& head, int value)
@@ -17,5 +18,18 @@ void addHead(node*& head, int value)
     curr->next = newNode;
     newNode->next = head;
     head = newNode;
+    return;
+}
+
+void myDisplay(node* head)
+{
+    node* curr = head;
+    std::cout << curr->data << " -> ";
+    curr = curr->next;
+    while (curr != head) {
+        std::cout << curr->data << " -> ";
+        curr = curr->next;
+    }
+    std::cout << curr->data << std::endl;
     return;
 }
