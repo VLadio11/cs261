@@ -29,7 +29,7 @@ public:
     void printHand();
     std::shared_ptr<Bone> getDouble(int number);
     bool hasDouble(int number);
-    bool canPlay(std::shared_ptr<Field> field);
+    bool play(std::shared_ptr<Field> field);
     int getScore();
     int getCurrentHandTotal();
     void setScore(int s);

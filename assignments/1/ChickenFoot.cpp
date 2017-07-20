@@ -11,6 +11,7 @@ int main(int argc, char** argv) {
     std::srand(std::time(0));
 
     Game* chickenfoot = new Game(NUM_OF_PLAYERS);
+    std::cout << "A game of ChickenFoot is beginning!" << std::endl;
     chickenfoot->start(DOMINOES_SET_SIZE);
 
     delete chickenfoot;

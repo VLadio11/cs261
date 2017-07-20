@@ -35,6 +35,7 @@ void Game::start(int highest_double)
             if ((*i)->hasDouble(highest_double)) {
                 std::shared_ptr<Bone> hd_bone = (*i)->getDouble(highest_double);
                 field = std::make_shared<Field>(hd_bone);
+                std::cout << "Round " << hd_bone->getLeft() << ":" << hd_bone->getRight() << " beginning..." << std::endl;
                 playRound(i);
                 played_rounds[highest_double] = true;
                 break;
@@ -64,17 +65,17 @@ void Game::start(int highest_double)
 
 void Game::playRound(std::vector< std::shared_ptr<Player> >::iterator first_player)
 {
+    printAllPlayersHands();
     std::vector< std::shared_ptr<Player> >::iterator i = getNextPlayerIterator(first_player);
     while ((*i)->hasPassed() == false) {
-        if ((*i)->canPlay(field)) {
-            // This is here just as a placeholder so that we don't end up in an infinite loop.
-            // What should actually happen here is the player should play!
-            (*i)->setHasPassed(true);
+        if ((*i)->play(field)) {
+            (*i)->setHasPassed(false);
         } else {
             (*i)->setHasPassed(true);
         }
         i = getNextPlayerIterator(i);
     }
+    field->printField();
     return;
 }
 
@@ -101,4 +102,11 @@ int Game::getNextHighestUnplayedRound(bool* played, int round)
         }
     }
     return -1;
+}
+
+void Game::printAllPlayersHands()
+{
+    for (std::vector< std::shared_ptr<Player> >::iterator i = players.begin(); i != players.end(); i++) {
+        (*i)->printHand();
+    }
 }

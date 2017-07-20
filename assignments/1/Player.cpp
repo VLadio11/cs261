@@ -23,11 +23,20 @@ void Player::printHand()
     std::cout << std::endl;
 }
 
-bool Player::canPlay(std::shared_ptr<Field> field)
+bool Player::play(std::shared_ptr<Field> field)
 {
     std::unordered_map< int, std::shared_ptr<Bone> > playable_bones = field->getPlayableBones();
     for (std::vector< std::shared_ptr<Bone> >::iterator i = hand.begin(); i != hand.end(); i++) {
-        if (playable_bones.find((*i)->getLeft()) != playable_bones.end() || playable_bones.find((*i)->getRight()) != playable_bones.end()) {
+        auto match = playable_bones.find((*i)->getLeft());
+        if (match != playable_bones.end()) {
+            field->connect(match->second, *i);
+            hand.erase(i);
+            return true;
+        }
+        match = playable_bones.find((*i)->getRight());
+        if (match != playable_bones.end()) {
+            field->connect(match->second, *i);
+            hand.erase(i);
             return true;
         }
     }

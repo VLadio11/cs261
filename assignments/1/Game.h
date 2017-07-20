@@ -9,7 +9,7 @@
 const int INITIAL_HAND_SIZE = 7;
 static const int DOMINOES_SET_SIZE = 9;
 
-const bool DEBUG = true;
+const bool DEBUG = false;
 
 class Game {
 private:
@@ -22,6 +22,7 @@ private:
     int getNextHighestUnplayedRound(bool* played, int round);
     void playRound(std::vector< std::shared_ptr<Player> >::iterator first_player);
     std::vector< std::shared_ptr<Player> >::iterator getNextPlayerIterator(std::vector< std::shared_ptr<Player> >::iterator it);
+    void printAllPlayersHands();
 public:
     Game(int num_of_players);
     void start(int highest_double);

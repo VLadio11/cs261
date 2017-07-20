@@ -1,3 +1,4 @@
+#include <iostream>
 #include "Field.h"
 
 Field::Field(std::shared_ptr<Bone> first_double)
@@ -44,4 +45,40 @@ void Field::traverse(
             playable_bones.insert({ child->bone->getLeft(), child->bone });
         }
     }
+}
+
+void Field::connect(std::shared_ptr<node> head, std::shared_ptr<Bone> parent, std::shared_ptr<Bone> new_connection)
+{
+    for (std::vector< std::shared_ptr<node> >::iterator i = head->connections.begin(); i != head->connections.end(); i++) {
+        connect(*i, parent, new_connection);
+    }
+    if (head->bone == parent) {
+        std::shared_ptr<node> new_node = std::make_shared<node>();
+        new_node->bone = new_connection;
+        new_node->connections = {};
+        head->connections.push_back(new_node);
+        return;
+    }
+}
+
+void Field::connect(std::shared_ptr<Bone> parent, std::shared_ptr<Bone> new_connection)
+{
+    return connect(head, parent, new_connection);
+}
+
+void Field::printField(std::shared_ptr<node> head)
+{
+    if (head->bone != nullptr) {
+        std::cout << head->bone->getLeft() << "," << head->bone->getRight() << " ";
+        for (std::vector< std::shared_ptr<node> >::iterator i = head->connections.begin(); i != head->connections.end(); i++) {
+            printField(*i);
+        }
+    }
+}
+
+void Field::printField()
+{
+    std::cout << "Field bones: ";
+    printField(head);
+    std::cout << std::endl;
 }
