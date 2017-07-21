@@ -8,7 +8,7 @@ Game::Game(int num_of_players)
         players.emplace_back(std::make_shared<Player>(i));
     }
     for (int i = 0; i <= DOMINOES_SET_SIZE; i++) {
-        played_rounds[i] = false;
+        played_rounds[i] = true;
     }
 }
 
@@ -31,11 +31,13 @@ void Game::start(int highest_double)
                 (*i)->printHand();
             }
         }
+
         for (std::vector< std::shared_ptr<Player> >::iterator i = players.begin(); i != players.end(); i++) {
             if ((*i)->hasDouble(highest_double)) {
                 std::shared_ptr<Bone> hd_bone = (*i)->getDouble(highest_double);
                 field = std::make_shared<Field>(hd_bone);
-                std::cout << "Round " << hd_bone->getLeft() << ":" << hd_bone->getRight() << " beginning..." << std::endl;
+                std::cout << "Player " << (*i)->getId() << " will begin round " << hd_bone->getLeft() << ":" << hd_bone->getRight() << ". ";
+                std::cout << "Round beginning..." << std::endl;
                 playRound(i);
                 played_rounds[highest_double] = true;
                 break;
@@ -67,6 +69,7 @@ void Game::playRound(std::vector< std::shared_ptr<Player> >::iterator first_play
 {
     printAllPlayersHands();
     std::vector< std::shared_ptr<Player> >::iterator i = getNextPlayerIterator(first_player);
+    std::cout << "Player " << (*i)->getId() << " is next..." << std::endl;
     while ((*i)->hasPassed() == false) {
         if ((*i)->play(field)) {
             (*i)->setHasPassed(false);
@@ -75,13 +78,15 @@ void Game::playRound(std::vector< std::shared_ptr<Player> >::iterator first_play
         }
         i = getNextPlayerIterator(i);
     }
+    std::cout << "Round is over... results:" << std::endl;
     field->printField();
+    printAllPlayersHands();
     return;
 }
 
 std::vector< std::shared_ptr<Player> >::iterator Game::getNextPlayerIterator(std::vector< std::shared_ptr<Player> >::iterator it)
 {
-    return (it == players.end()) ? players.begin() : it++;
+    return (it == players.end()) ? players.begin() : ++it;
 }
 
 int Game::getHighestUnplayedRound(bool* played)
