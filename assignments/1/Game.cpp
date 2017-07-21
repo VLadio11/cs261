@@ -100,7 +100,7 @@ int Game::getNextHighestUnplayedRound(bool* played, int round)
             return i;
         }
     }
-    return -1;
+    return getHighestUnplayedRound(played_rounds);
 }
 
 void Game::printAllPlayersHands()
