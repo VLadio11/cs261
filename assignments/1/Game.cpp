@@ -8,7 +8,7 @@ Game::Game(int num_of_players)
         players.emplace_back(std::make_shared<Player>(i));
     }
     for (int i = 0; i <= DOMINOES_SET_SIZE; i++) {
-        played_rounds[i] = true;
+        played_rounds[i] = false;
     }
 }
 
@@ -18,20 +18,14 @@ void Game::start(int highest_double)
         return;
     } else {
         boneyard->initialize();
-        if (DEBUG) {
-            boneyard->printBoneyard();
+        for (std::vector< std::shared_ptr<Player> >::iterator i = players.begin(); i != players.end(); i++) {
+            (*i)->setHasPassed(false);
         }
         for (int i = 0; i < INITIAL_HAND_SIZE; i++) {
             for (std::vector< std::shared_ptr<Player> >::iterator j = players.begin(); j != players.end(); j++) {
                 (*j)->draw(boneyard);
             }
         }
-        if (DEBUG) {
-            for (std::vector< std::shared_ptr<Player> >::iterator i = players.begin(); i != players.end(); i++) {
-                (*i)->printHand();
-            }
-        }
-
         for (std::vector< std::shared_ptr<Player> >::iterator i = players.begin(); i != players.end(); i++) {
             if ((*i)->hasDouble(highest_double)) {
                 std::shared_ptr<Bone> hd_bone = (*i)->getDouble(highest_double);
@@ -53,6 +47,7 @@ void Game::start(int highest_double)
             (*i)->setScore(current_score + hand_total);
             (*i)->discardAll();
         }
+        showScores();
         start(getHighestUnplayedRound(played_rounds));
     } else {
         // This handles cases in which none of the players drew the double bone that corresponds
@@ -69,8 +64,7 @@ void Game::playRound(std::vector< std::shared_ptr<Player> >::iterator first_play
 {
     printAllPlayersHands();
     std::vector< std::shared_ptr<Player> >::iterator i = getNextPlayerIterator(first_player);
-    std::cout << "Player " << (*i)->getId() << " is next..." << std::endl;
-    while ((*i)->hasPassed() == false) {
+    while (haveAllPlayersPassed() == false) {
         if ((*i)->play(field)) {
             (*i)->setHasPassed(false);
         } else {
@@ -86,7 +80,7 @@ void Game::playRound(std::vector< std::shared_ptr<Player> >::iterator first_play
 
 std::vector< std::shared_ptr<Player> >::iterator Game::getNextPlayerIterator(std::vector< std::shared_ptr<Player> >::iterator it)
 {
-    return (it == players.end()) ? players.begin() : ++it;
+    return ((it+1) == players.end()) ? players.begin() : ++it;
 }
 
 int Game::getHighestUnplayedRound(bool* played)
@@ -114,4 +108,23 @@ void Game::printAllPlayersHands()
     for (std::vector< std::shared_ptr<Player> >::iterator i = players.begin(); i != players.end(); i++) {
         (*i)->printHand();
     }
+}
+
+bool Game::haveAllPlayersPassed()
+{
+    for (std::vector< std::shared_ptr<Player> >::iterator i = players.begin(); i != players.end(); i++) {
+        if ((*i)->hasPassed() == false) {
+            return false;
+        }
+    }
+    return true;
+}
+
+void Game::showScores()
+{
+    std::cout << std::endl << "*********** Scores ***********" << std::endl;
+    for (std::vector< std::shared_ptr<Player> >::iterator i = players.begin(); i != players.end(); i++) {
+        std::cout << "Player " << (*i)->getId() << ": " << (*i)->getScore() << std::endl;
+    }
+    std::cout << "**************************" << std::endl << std::endl;
 }

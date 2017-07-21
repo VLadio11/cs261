@@ -23,6 +23,8 @@ private:
     void playRound(std::vector< std::shared_ptr<Player> >::iterator first_player);
     std::vector< std::shared_ptr<Player> >::iterator getNextPlayerIterator(std::vector< std::shared_ptr<Player> >::iterator it);
     void printAllPlayersHands();
+    bool haveAllPlayersPassed();
+    void showScores();
 public:
     Game(int num_of_players);
     void start(int highest_double);

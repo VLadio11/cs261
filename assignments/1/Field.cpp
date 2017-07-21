@@ -23,7 +23,7 @@ std::unordered_map< int, std::shared_ptr<Bone> > Field::getPlayableBones()
 }
 
 void Field::traverse(
-    std::unordered_map< int, std::shared_ptr<Bone> > playable_bones,
+    std::unordered_map< int, std::shared_ptr<Bone> > &playable_bones,
     std::shared_ptr<node> parent,
     std::shared_ptr<node> child
 ) {
@@ -39,9 +39,9 @@ void Field::traverse(
     if (!child->bone->isDouble() && child->connections.size() < 1) {
         // Check the parent's left and right values to figure out which child value is actually playable.
         // Then, insert the child's bone into playable_bones with the proper playable value as the key
-        if (child->bone->getLeft() == parent->bone->getLeft() || child->bone->getRight() == parent->bone->getRight()) {
+        if (child->bone->getLeft() == parent->bone->getLeft() || child->bone->getLeft() == parent->bone->getRight()) {
             playable_bones.insert({ child->bone->getRight(), child->bone });
-        } else if (child->bone->getLeft() == parent->bone->getRight() || child->bone->getRight() == parent->bone->getLeft()) {
+        } else if (child->bone->getRight() == parent->bone->getRight() || child->bone->getRight() == parent->bone->getLeft()) {
             playable_bones.insert({ child->bone->getLeft(), child->bone });
         }
     }

@@ -12,7 +12,7 @@ private:
         std::vector< std::shared_ptr<node> > connections;
     };
     std::shared_ptr<node> head;
-    void traverse(std::unordered_map< int, std::shared_ptr<Bone> > playable_bones, std::shared_ptr<node> parent, std::shared_ptr<node> child);
+    void traverse(std::unordered_map< int, std::shared_ptr<Bone> > &playable_bones, std::shared_ptr<node> parent, std::shared_ptr<node> child);
     void connect(std::shared_ptr<node> head, std::shared_ptr<Bone> parent, std::shared_ptr<Bone> new_connection);
     void printField(std::shared_ptr<node> head);
 public:
