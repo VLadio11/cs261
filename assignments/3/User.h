@@ -4,13 +4,15 @@
 #include <string>
 
 class User {
-public:
-    User(const char* name);
-
 private:
-    std::string m_name;
-    std::string comm_preference;
+    std::string name_;
+    std::string comm_preference_;
     User();
+
+public:
+    User(const std::string& name, const std::string& comm_preference = "email");
+    std::string getName() const;
+    std::string getCommPreference() const;
 };
 
 #endif
