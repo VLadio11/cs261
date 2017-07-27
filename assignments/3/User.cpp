@@ -18,7 +18,7 @@ std::string User::getCommPreference() const
 
 void User::sendMessage(std::shared_ptr<User> recipient, const std::string& msg)
 {
-    return sendMessage(recipient, msg, getCommPreference());
+    return sendMessage(recipient, msg, recipient->getCommPreference());
 }
 
 void User::sendMessage(std::shared_ptr<User> recipient, const std::string& msg, const std::string& type)

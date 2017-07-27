@@ -13,7 +13,7 @@ int main(int argc, char** argv) {
     std::shared_ptr<User> user2 = std::make_shared<User>("Jon", "facebook");
     std::cout << user2->getName() << ":" << user2->getCommPreference() << std::endl;
 
-    user1->sendMessage(user2, "This is a Facebook message!");
+    user1->sendMessage(user2, "This is an email message!");
 
     return 0;
 }
