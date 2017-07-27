@@ -1,6 +1,6 @@
 #include "Message.h"
 
-Message::Message(const std::string& message): message_(message) {}
+Message::Message(const std::string& message, const std::string& from): message_(message), from_(from) {}
 
 std::string Message::getMessage() const
 {

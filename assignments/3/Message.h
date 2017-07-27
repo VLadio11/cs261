@@ -6,11 +6,10 @@
 class Message {
 protected:
     std::string message_;
-    std::string type_;
-    Message();
+    std::string from_;
 
 public:
-    Message(const std::string& message);
+    Message(const std::string& message, const std::string& from);
     std::string getMessage() const;
 };
 

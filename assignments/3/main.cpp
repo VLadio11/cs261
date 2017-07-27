@@ -1,16 +1,19 @@
 #include <iostream>
+#include <memory>
 #include "User.h"
+#include "Message.h"
+#include "FacebookMessage.h"
 
 int main(int argc, char** argv) {
     std::cout << "CS 261 - Project 3 - Phil Stephenson" << std::endl;
 
-    User* user1 = new User("Phil");
+    std::shared_ptr<User> user1 = std::make_shared<User>("Phil");
     std::cout << user1->getName() << ":" << user1->getCommPreference() << std::endl;
-    delete user1;
 
-    User* user2 = new User("Jon", "facebook");
+    std::shared_ptr<User> user2 = std::make_shared<User>("Jon", "facebook");
     std::cout << user2->getName() << ":" << user2->getCommPreference() << std::endl;
-    delete user2;
+
+    user1->sendMessage(user2, "This is a Facebook message!");
 
     return 0;
 }
