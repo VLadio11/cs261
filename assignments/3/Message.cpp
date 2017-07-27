@@ -6,3 +6,8 @@ std::string Message::getMessage() const
 {
     return message_;
 }
+
+std::string Message::getFrom() const
+{
+    return from_;
+}

@@ -18,6 +18,8 @@ public:
     void sendMessage(std::shared_ptr<User> recipient, const std::string& msg);
     void sendMessage(std::shared_ptr<User> recipient, const std::string& msg, const std::string& type);
     void addNewMessage(std::shared_ptr<Message> msg);
+    bool hasNewMessages() const;
+    void readNewMessages();
 };
 
 #endif

@@ -7,13 +7,13 @@
 int main(int argc, char** argv) {
     std::cout << "CS 261 - Project 3 - Phil Stephenson" << std::endl;
 
-    std::shared_ptr<User> user1 = std::make_shared<User>("Phil");
-    std::cout << user1->getName() << ":" << user1->getCommPreference() << std::endl;
+    std::shared_ptr<User> foo = std::make_shared<User>("Foo", "email");
+    std::shared_ptr<User> bar = std::make_shared<User>("Bar", "facebook");
+    std::shared_ptr<User> baz = std::make_shared<User>("Baz", "text");
 
-    std::shared_ptr<User> user2 = std::make_shared<User>("Jon", "facebook");
-    std::cout << user2->getName() << ":" << user2->getCommPreference() << std::endl;
-
-    user1->sendMessage(user2, "This is an email message!");
+    foo->sendMessage(bar, "Hi Bar!");
+    baz->sendMessage(bar, "Hey Bar, its Baz here... how are you?", "email");
+    bar->readNewMessages();
 
     return 0;
 }

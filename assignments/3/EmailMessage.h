@@ -6,6 +6,7 @@
 class EmailMessage : public Message {
 public:
     EmailMessage(const std::string& message, const std::string& from);
+    std::string getType() const;
 };
 
 #endif
