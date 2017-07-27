@@ -22,5 +22,9 @@ int main(int argc, char** argv) {
     std::shared_ptr<Message> copy = msg->clone();
     std::cout << *copy << std::endl;
 
+    bar->sendMessage(foo, "Foo: I want to test your copy constructor. Wanna try it? Cool.");
+    std::shared_ptr<User> foo_copy = foo;
+    foo_copy->readNewMessages();
+
     return 0;
 }

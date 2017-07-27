@@ -9,6 +9,8 @@ User::User(const std::string& name, const std::string& comm_preference): name_(n
     inbox = std::make_shared<Inbox>();
 }
 
+User::User(const User& u): name_(u.name_), comm_preference_(u.comm_preference_), inbox(u.inbox) {}
+
 std::string User::getName() const
 {
     return name_;

@@ -10,6 +10,8 @@ private:
     std::vector< std::shared_ptr<Message> > newMessages;
     std::vector< std::shared_ptr<Message> > readMessages;
 public:
+    Inbox();
+    Inbox(const Inbox& in);
     void addNewMessage(std::shared_ptr<Message> msg);
     bool hasNewMessages() const;
     void readNewMessages();

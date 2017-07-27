@@ -1,6 +1,18 @@
 #include "Inbox.h"
 #include <iostream>
 
+Inbox::Inbox() {}
+
+Inbox::Inbox(const Inbox& in)
+{
+    for (auto iterator = in.newMessages.begin(); iterator != in.newMessages.end(); iterator++) {
+        this->newMessages.push_back((*iterator)->clone());
+    }
+    for (auto iterator = in.readMessages.begin(); iterator != in.readMessages.end(); iterator++) {
+        this->readMessages.push_back((*iterator)->clone());
+    }
+}
+
 void Inbox::addNewMessage(std::shared_ptr<Message> msg)
 {
     newMessages.emplace_back(msg);

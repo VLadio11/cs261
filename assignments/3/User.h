@@ -13,6 +13,7 @@ private:
 
 public:
     User(const std::string& name, const std::string& comm_preference = "email");
+    User(const User& u);
     std::string getName() const;
     std::string getCommPreference() const;
     void sendMessage(std::shared_ptr<User> recipient, const std::string& msg);
