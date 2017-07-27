@@ -15,6 +15,12 @@ int main(int argc, char** argv) {
     baz->sendMessage(bar, "Hey Bar, its Baz here... how are you?", "email");
     bar->readNewMessages();
     bar->readNewMessages(); // Show show 'No new messages!' since we just read them
+    baz->readNewMessages();
+
+    std::cout << std::endl;
+    std::shared_ptr<Message> msg = std::make_shared<FacebookMessage>("Clone this facebook message", "Phil");
+    std::shared_ptr<Message> copy = msg->clone();
+    std::cout << *copy << std::endl;
 
     return 0;
 }

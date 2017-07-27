@@ -6,3 +6,8 @@ std::string TextMessage::getType() const
 {
     return "text";
 }
+
+std::shared_ptr<Message> TextMessage::clone() const
+{
+    return std::make_shared<TextMessage>(*this);
+}

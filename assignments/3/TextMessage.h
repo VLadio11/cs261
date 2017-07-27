@@ -7,6 +7,7 @@ class TextMessage : public Message {
 public:
     TextMessage(const std::string& message, const std::string& from);
     std::string getType() const;
+    std::shared_ptr<Message> clone() const;
 };
 
 #endif

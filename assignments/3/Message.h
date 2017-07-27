@@ -3,6 +3,7 @@
 
 #include <string>
 #include <ostream>
+#include <memory>
 
 class Message {
 protected:
@@ -12,6 +13,7 @@ protected:
 
 public:
     Message(const std::string& message, const std::string& from);
+    virtual std::shared_ptr<Message> clone() const = 0;
     std::string getMessage() const;
     std::string getFrom() const;
     friend std::ostream& operator<<(std::ostream& os, Message& msg);
