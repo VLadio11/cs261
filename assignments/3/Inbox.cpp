@@ -16,7 +16,9 @@ void Inbox::readNewMessages()
     if (hasNewMessages()) {
         for (auto i = newMessages.begin(); i != newMessages.end(); i++) {
             std::cout << **i << std::endl;
+            readMessages.push_back(*i);
         }
+        newMessages.clear();
     } else {
         std::cout << "No new messages!" << std::endl;
     }

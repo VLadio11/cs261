@@ -14,6 +14,7 @@ int main(int argc, char** argv) {
     foo->sendMessage(bar, "Hi Bar!");
     baz->sendMessage(bar, "Hey Bar, its Baz here... how are you?", "email");
     bar->readNewMessages();
+    bar->readNewMessages(); // Show show 'No new messages!' since we just read them
 
     return 0;
 }
