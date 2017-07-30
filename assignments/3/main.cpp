@@ -2,6 +2,7 @@
 #include <memory>
 #include "User.h"
 #include "Message.h"
+#include "TextMessage.h"
 #include "FacebookMessage.h"
 
 int main(int argc, char** argv) {
@@ -25,6 +26,21 @@ int main(int argc, char** argv) {
     bar->sendMessage(foo, "Foo: I want to test your copy constructor. Wanna try it? Cool.");
     std::shared_ptr<User> foo_copy = foo;
     foo_copy->readNewMessages();
+
+    std::shared_ptr<Message> m1 = std::make_shared<FacebookMessage>("Is this message identical?", "Bar");
+    std::shared_ptr<Message> m2 = std::make_shared<TextMessage>("Is this message identical?", "Foo");
+    if (*m1 == *m2) {
+        std::cout << "m1 and m2 are equal." << std::endl;
+    }
+
+    std::shared_ptr<Message> m3 = std::make_shared<TextMessage>("Let's check inequality...", "Foo");
+    if (*m2 != *m3) {
+        std::cout << "m2 and m3 are NOT equal." << std::endl;
+    }
+
+    // Test binary arithmetic operator overloading
+    *m1 += *m2;
+    std::cout << *m1 << std::endl;
 
     return 0;
 }

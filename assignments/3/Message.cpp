@@ -11,3 +11,9 @@ std::string Message::getFrom() const
 {
     return from_;
 }
+
+Message& Message::operator+= (const Message& rhs)
+{
+    this->message_ += rhs.getMessage();
+    return *this;
+}
