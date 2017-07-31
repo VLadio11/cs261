@@ -1,0 +1,15 @@
+Phil Stephenson
+gdb, valgrind and vim:
+
+In this project I also used GDB and valgrind to find bugs and memory leaks. After becoming more comfortable this project with using smart pointers, 
+I found myself running into fewer memory leaks and seg faults, but they did still happen, and these tools helped me solve the problems.
+
+I also used this project as an opportunity to get more comfortable with vim keybindings. Especially since in the PSU
+proficiency demo, we cannot use an IDE, but are limited to vim, emacs, nano, or pico.
+
+I've used vim in the past, but I spent some time this project learning how to do the most common things I find myself
+doing with any project:
+    - Search and replace
+    - Find specific strings
+    - Copy and pasting entire blocks of code (using visual mode)
+    - Opening separate tabs and vim windows
