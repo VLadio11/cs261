@@ -1,0 +1,50 @@
+Phil Stephenson
+Assignment 3
+
+Design thoughts:
+
+I took a simpler approach to assignment 3 and implemented specifically what was required in the assignment sheet.
+In this assignment I've used an inheritance hierarchy to represent different types of messages, I've included more than 5 different classes, 
+and implemented overloaded operators for the Message class which are then used in main.cpp.
+
+User.cpp:
+The User class represents a single user of the system. Each user has a name, a comm_preference (communication preference), and an "Inbox" (see below).
+The User class interacts with the Inbox class to read and send messages to other users. For example: If we use the User->sendMessage api,
+and Sue sends a message to Mark:
+    sue->sendMessage(mark, "Hi Mark!");
+
+The User class defines 2 separate methods called sendMessage, one accepts a third parameter "type" which then creates a conditional message type
+depending on what the user defines: E.g. If type == "facebook", then Mark receives a FacebookMessage, if type == "text", Mark receives a TextMessage
+(more on Message classes below). The other sendMessage api is called like the one above and does not include the "type" parameter. In this case,
+the method will look for Mark's comm_preference property, and will construct a message of that type since a type was not defined.
+
+Message.cpp and its derived classes (FacebookMessage, TextMessage, EmailMessage):
+The Message.cpp proper represents an abstract class that shares properties and behaviors of all different types of messages. It contains a
+pure virtual function 'virtual std::string getType() const = 0;' which is defined in each derived Message class and returns a string
+for which type of message it represents. I imagine there might be a better solution for this in C++, but I spent some time looking around online
+and could not find something simple. In other interpreted languages for which I am familiar (e.g. PHP, Javascript), there are languages constructs
+that allow you to check the type of an object, e.g. is (A instanceof B)?
+
+The inheritance hierarchy also presented challenges when trying to store different types of messages in a collection. For example,
+my Inbox class contains vectors of type: std::vector< std::shared_ptr<Message> > - but I could not simply store a pointer to any of the derived
+classes here since the compiler would complain. My solution here was to simply return the base class pointer and then check the object's getType method.
+Again, I think there is probably a better way to do this, but I had trouble here.
+
+The Message class also contains the operator overloads, including <<, ==, !=, and +=.
+
+Inbox.cpp:
+The idea behind the inbox was class was that I wanted 2 separate contains to represent "new" messages, and "read" messages, just like you have
+in any email inbox (or indeed, many other message inboxes). This class includes 2 separate vectors for new and read messages, and then manages
+the interaction between the two types. Notice, when a user calls 'readNewMessages', it defers to a method in the Inbox class with the same name
+which iterates through any messages in the new vector, and prints them. It then copies all of the new messages into the read messages vector and
+empty's the new vector.
+
+In hindsight, rather than copying and moving all of these pointers around, it probably would have been better to have some flag on the Message
+class that says whether a Message is new or not. This would avoid the need to have 2 separate contains, and might even eliminate the need for an 
+Inbox class altogether.
+
+
+Conclusion:
+While I have worked with object oriented programming on a number of projects in the past, I've never done so in a language with a 
+type system and a compiler. So I found this project interesting and challenging in that regard. The introduction of an inheritance hierarchy
+presented interested challenges that I described above and I learned a bit about how C++ inheritance works.
