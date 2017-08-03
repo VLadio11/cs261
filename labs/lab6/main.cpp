@@ -5,6 +5,7 @@ using namespace std;
 
 int main()
 {
+    cout << "Phil Stephenson - CS261" << endl;
     node * root = NULL;
     build(root);
     display(root);
