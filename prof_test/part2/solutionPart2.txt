@@ -1,0 +1,129 @@
+#include "table.h"
+// Phil Stephenson
+
+//Please put the impelementation of the required functions here
+int copyToArray(node* root, int intArray[])
+{
+    if (root == NULL) {
+        return 0;
+    }
+    int index = 0;
+    return copyToArray(root, intArray, index);
+}
+
+int copyToArray(node* root, int intArray[], int& index)
+{
+    if (root == NULL) {
+        return index;
+    }
+    copyToArray(root->left, intArray, index);
+    intArray[index++] = root->data;
+    copyToArray(root->right, intArray, index);
+    return index;
+}
+
+int countNodes(node* root, int& count)
+{
+    if (root == NULL) {
+        return count;
+    }
+    count++;
+    countNodes(root->left, count);
+    countNodes(root->right, count);
+    return count;
+}
+
+void copyNonLeafRecursive(node* root, node*& newRoot)
+{
+    if (root && (root->left || root->right)) {
+        node* n = new node;
+        n->data = root->data;
+        n->left = NULL;
+        n->right = NULL;
+        newRoot = n;
+        copyNonLeaf(root->left, newRoot->left);
+        copyNonLeaf(root->right, newRoot->right);
+    } else {
+        newRoot = NULL;
+    }
+    return;
+}
+
+void copyNonLeaf(node* root, node*& newRoot)
+{
+    if (newRoot != NULL) {
+        deleteTree(newRoot);
+    }
+    copyNonLeafRecursive(root, newRoot);
+    return;
+}
+
+void deleteTree(node*& root)
+{
+    if (root == NULL) {
+        return;
+    }
+    deleteTree(root->left);
+    deleteTree(root->right);
+    delete root;
+    root = NULL;
+    return;
+}
+    
+Welcome to the Proficiency Demo!
+
+Inorder traversal: 21  22  35  48  100  100  101  106  124  133  
+
+Level 1: 124
+Level 2: 106 and 133
+Level 3: 21
+Level 4: 100
+Level 5: 48 and 101
+Level 6: 22
+Level 7: 35
+Level 6: 100
+
+
+This tree contains 10 items 
+Copying the tree into an array...
+21
+22
+35
+48
+100
+100
+101
+106
+124
+133
+Duplicating tree (except for leaf nodes):
+
+
+The resulting tree after your function ran is: 
+Inorder traversal: 21  22  48  100  101  106  124  
+
+Level 1: 124
+Level 2: 106
+Level 3: 21
+Level 4: 100
+Level 5: 48 and 101
+Level 6: 22
+
+
+This tree contains 7 items 
+
+
+The resulting tree after your function ran is: 
+Inorder traversal: 21  22  35  48  100  100  101  106  124  133  
+
+Level 1: 124
+Level 2: 106 and 133
+Level 3: 21
+Level 4: 100
+Level 5: 48 and 101
+Level 6: 22
+Level 7: 35
+Level 6: 100
+
+
+This tree contains 10 items 
